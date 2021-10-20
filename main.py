@@ -13,6 +13,9 @@ app.secret_key = 'hWdsd39lg'
 
 # --------------------------- FORMS --------------------------- #
 
+
+# --------------------------- angela --------------------------- #
+
 class SearchForm(FlaskForm):
     buscar = StringField('Buscar')
     lupa = SubmitField('<i class="fa fa-search fa-lg">&nbsp;</i>')
