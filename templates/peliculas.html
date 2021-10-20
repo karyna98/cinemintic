@@ -1,0 +1,170 @@
+{% extends "bootstrap/base.html" %}
+
+{% block styles %}
+  <meta charset="utf-8">
+  <title>Peliculas</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/icon.ico') }}"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+  <style>
+  :root{
+    --gold1:#F4BD76;
+    --gold2:#F6CD8F;
+    --gray:#ffffff80;
+    --gray2:#f7d9d990;
+    --black1: #9C9C9B;
+    --black2: #30353B;
+    --shadow: 0 8px 8px;
+    --color_shadow: #00000033;
+  }
+  body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  }
+
+  .sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #154360;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  }
+
+  .sidebar a {
+  display: block;
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+  }
+
+  .sidebar a.active {
+  background: linear-gradient(180deg, var(--black2) 0%, var(--black1) 100%);color: white;
+  color: white;
+  }
+
+  .sidebar a:hover:not(.active) {
+  background-color: #D0D3D4;
+  color: white;
+  }
+
+  div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+  }
+
+  @media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+  }
+
+  @media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+  }
+</style>
+
+{% endblock %}
+
+{% block title %} CineMisionTic {% endblock %}
+
+{% block content %}
+  <div class="sidebar">
+    <a class="active" href="{{ url_for('home') }}"><i class="fas fa-ticket-alt"></i> Cine MinTic</a>
+    <a href="{{ url_for('manage_movies') }}"><i class="fas fa-film"></i> Peliculas</a>
+    <a href="{{ url_for('manage_functions') }}"><i class="fas fa-theater-masks"></i> Funciones</a>
+    <a href="{{ url_for('manage_users') }}"><i class="fas fa-users"></i> Roles y Usuarios</a>
+    <a href="#logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesion</a>
+  </div>
+  <nav style="background: linear-gradient(180deg, var(--black2) 0%, var(--black1) 100%);color: white;" class="navbar justify-content-between">
+    <a class="navbar-brand"><i class="fas fa-ticket-alt"></i> Cine MinTic</a>
+    <i style="font-size:20px" class="fas fa-user"></i>
+  </nav>
+  <div class="content">
+    <h2 style="margin:15px;"><i class="fas fa-film"></i> Peliculas</h2>
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Codigo</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Portada</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Borrar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row"><a href="">1235</a></th>
+        <td>X-Men: Días del futuro pasado</td>
+        <td><img src="{{ url_for('static', filename='img/image1.jpg') }}" style="max-width: 100px;"></td>
+        <td>En el futuro, los mutantes luchan por sobrevivir en campos de concentración controlados por los terribles Centinelas de Industrias Trask. Para evitar ese mundo apocalíptico, los bandos de Charles Xavier y Magneto deberán unir fuerzas.</td>
+        <td>En cartelera</td>
+        <td><a href=""><i class="far fa-edit"></i></a></td>
+        <td><a href=""><i class="far fa-trash-alt"></i></a></td>
+        
+      </tr>
+      <tr>
+        <th scope="row"><a href="">2411</a></th>
+        <td>Dolittle</td>
+        <td><img src="{{ url_for('static', filename='img/image2.jpg') }}" style="max-width: 100px;"></td>
+        <td>El Dr. John Dolittle vive solo detrás de los muros de su exuberante mansión en la Inglaterra del siglo XIX. Su única compañía proviene de una variedad de animales exóticos con los que habla a diario.</td>
+        <td scope="col">Proximamente</td>
+        <td><a href=""><i class="far fa-edit"></i></a></td>
+        <td><a href=""><i class="far fa-trash-alt"></i></a></td>
+      </tr>
+      <tr>
+        <th scope="row"><a href="">7654</a></th>
+        <td>Free Guy: tomando el control</td>
+        <td><img src="{{ url_for('static', filename='img/image3.jpg') }}" style="max-width: 100px;"></td>
+        <td>Un cajero de un banco descubre que en realidad es un personaje sin papel dentro de un brutal videojuego de mundo interactivo.</td>
+        <td>En cartelera</td>
+        <td><a href=""><i class="far fa-edit"></i></a></td>
+        <td><a href=""><i class="far fa-trash-alt"></i></a></td>
+      </tr>
+      <tr>
+        <th scope="row"><a href="">2314</a></th>
+        <td>Shang-Chi y la leyenda de los Diez Anillos
+      </td>
+      <td><img src="{{ url_for('static', filename='img/image4.jpg') }}" style="max-width: 100px;"></td>
+      <td>El maestro de artes marciales Shang-Chi se enfrenta al pasado que creía haber dejado atrás cuando se ve envuelto en la red de la misteriosa organización de los Diez Anillos.
+    </td>
+    <td>En cartelera</td>
+        <td><a href=""><i class="far fa-edit"></i></a></td>
+        <td><a href=""><i class="far fa-trash-alt"></i></a></td>
+      </tr>
+      <tr>
+        <th scope="row"><a href="">8963</a></th>
+        <td>Black Widow
+      </td>
+      <td><img src="{{ url_for('static', filename='img/image5.jpg') }}" style="max-width: 100px;"></td>
+      <td>Una peligrosa conspiración, relacionada con su pasado, persigue a Natasha Romanoff, también conocida como Viuda Negra. La agente tendrá que lidiar con las consecuencias de haber sido espía, así como con las relaciones rotas, para sobrevivir.
+      </td>
+        <td>En cartelera</td>
+        <td><a href=""><i class="far fa-edit"></i></a></td>
+        <td><a href=""><i class="far fa-trash-alt"></i></a></td>
+      </tr>
+      <tr>
+        <th scope="row"><a href="">3546	</a></th>
+        <td>Sin tiempo para morir</td>
+        <td><img src="{{ url_for('static', filename='img/image6.jpg') }}" style="max-width: 100px;"></td>
+        <td>EL legendario espía James Bond ha dejado el servicio activo. Su paz dura poco ya que su viejo amigo Felix Leiter de la CIA aparece pidiendo ayuda, lo que lleva a Bond al rastro de un misterioso villano armado con nueva tecnología peligrosa.
+    </td>
+    <td>En cartelera</td>
+        <td><a href=""><i class="far fa-edit"></i></a></td>
+        <td><a href=""><i class="far fa-trash-alt"></i></a></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+{% endblock %}
